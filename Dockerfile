@@ -114,7 +114,7 @@ FROM scanservjs-core
 
 RUN apt-get update \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /var/lib/apt/lists/*
 
 
 # hplip image
