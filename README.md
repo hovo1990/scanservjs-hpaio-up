@@ -92,6 +92,12 @@ sudo usermod -aG lp,scanner $USER
 
 https://askubuntu.com/questions/153746/xsane-failed-to-open-device-hpaio-net-photosmart-c5100-serieszc-hp5180-err
 hp-plugin
+
+
+# still error
+[hpaio] sane_hpaio_open(/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117): scan/sane/hpaio.c 395 scan_type=9 scansrc=1
+error: SANE: Error during device I/O (code=9)
+
 ```
 
 # scanservjs
