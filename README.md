@@ -98,6 +98,15 @@ hp-plugin
 [hpaio] sane_hpaio_open(/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117): scan/sane/hpaio.c 395 scan_type=9 scansrc=1
 error: SANE: Error during device I/O (code=9)
 
+
+
+sudo apt install apparmor-utils
+sudo aa-disable /usr/share/hplip/plugin.py
+hp-plugin
+
+# maybe just use internal ubuntu hplip and stop compiling stupid HPLIP new version
+
+
 ```
 
 # scanservjs
