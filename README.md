@@ -1,3 +1,11 @@
+# This is a custom fork, which integrates new HPLIP drivers for LaserJet MFP M139-M141
+
+## How to build
+
+```bash
+docker buildx build -f Dockerfile -t hovo:test .
+```
+
 # scanservjs
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/sbs20/scanservjs/build.yml?branch=master&style=for-the-badge)](https://github.com/sbs20/scanservjs/actions)
