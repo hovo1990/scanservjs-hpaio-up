@@ -30,6 +30,14 @@ docker run \
   --name scanservjs-container \
   --privileged hovo:test
 
+# debug
+ docker exec -it scanservjs-container /bin/bash
+ scanimage -L
+
+
+scanimage --device "hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117" --format=png > scan.png
+
+
 ```
 
 # scanservjs
