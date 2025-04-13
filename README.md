@@ -30,12 +30,50 @@ docker run \
   --name scanservjs-container \
   --privileged hovo:test
 
-# debug
+# debug outside docker
  docker exec -it scanservjs-container /bin/bash
  scanimage -L
 
 
 scanimage --device "hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117" --format=png > scan.png
+
+
+sudo systemctl restart saned.socket
+sudo sane-find-scanner
+
+
+
+# create udev rule
+
+lsusb
+Bus 001 Device 005: ID 03f0:0372 HP, Inc HP LaserJet MFP M139-M142
+
+
+
+# -- *Part 1 For Garni Printer
+RUN echo 'SYSFS{idVendor}=="03f0", MODE="0666", GROUP="scanner", ENV{libsane_matched}="yes"' >/etc/udev/rules.d/55-libsane.rules
+
+# -- * PART 2  Garni Printer
+
+RUN echo 'usb 0x03f0 0x0372' >> /etc/sane.d/hp.conf
+
+
+# restart udev rules
+RUN udevadm control --reload-rules;udevadm trigger
+
+
+# outside docker
+echo 'SYSFS{idVendor}=="03f0", MODE="0666", GROUP="scanner", ENV{libsane_matched}="yes"' | sudo tee /etc/udev/rules.d/55-libsane.rules
+echo 'usb 0x03f0 0x0372' | sudo tee /etc/sane.d/hp.conf
+sudo udevadm control --reload-rules;udevadm trigger
+
+
+# sudo test
+sudo scanimage -L
+sudo scanimage --device "hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117" --format=png > scan.png
+
+ sudo chmod a+rw /dev/bus/usb/002/003
+
 
 
 ```
