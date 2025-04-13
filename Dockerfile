@@ -169,4 +169,4 @@ RUN /tmp/depend.sh
 # -- * Install new hplip driver
 COPY custom/custom_hplip.run /tmp
 RUN chmod +x /tmp/custom_hplip.run
-RUN /tmp/custom_hplip.run --quiet --accept --nox11
+RUN /tmp/custom_hplip.run --accept --nox11
