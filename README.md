@@ -100,12 +100,16 @@ error: SANE: Error during device I/O (code=9)
 
 
 
+# after restart run hp-setup
+
 sudo apt install apparmor-utils
 sudo aa-disable /usr/share/hplip/plugin.py
 hp-plugin
 
 # maybe just use internal ubuntu hplip and stop compiling stupid HPLIP new version
+https://developers.hp.com/hp-linux-imaging-and-printing/plugins
 
+hp-plugin -p hplip-3.25.2-plugin.run -i
 
 ```
 
