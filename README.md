@@ -75,10 +75,10 @@ sudo scanimage --device "hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117"
  sudo chmod a+rw /dev/bus/usb/002/003
 
 
-
+Running './configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib --prefix=/usr --enable-network-build --enable-scan-build --enable-fax-build --enable-dbus-build --disable-qt4 --disable-qt5 --disable-class-driver --enable-doc-build --disable-policykit --disable-libusb01_build --disable-udev_sysfs_rules --enable-hpcups-install --disable-hpijs-install --disable-foomatic-ppd-install --disable-foomatic-drv-install --disable-cups-ppd-install --enable-cups-drv-install --enable-apparmor_build'
 
 hp-check -t
-
+sudo usermod -aG lp,scanner $USER
 ```
 
 # scanservjs
