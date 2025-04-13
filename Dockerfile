@@ -117,6 +117,12 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 
+# -- * Install new hplip driver
+COPY custom/custom_hplip.run /tmp
+RUN chmod +x /tmp/custom_hplip.run
+RUN custom_hplip.run --auto
+
+
 # hplip image
 #
 # This image adds the HP scanner libs to the image. This target is not built by
@@ -128,6 +134,9 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && echo hpaio >> /etc/sane.d/dll.conf
+
+
+
 
 # brscan4 image
 #
@@ -145,3 +154,19 @@ RUN apt-get update \
   && dpkg -i /tmp/brscan4.deb \
   && rm /tmp/brscan4.deb \
   && echo brscan4 >> /etc/sane.d/dll.conf
+
+RUN apt-get update \
+&& apt-get install -yq python3 python3-pip \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
+
+
+COPY custom/depend.sh /tmp
+RUN chmod +x /tmp/depend.sh
+RUN /tmp/depend.sh
+
+
+# -- * Install new hplip driver
+COPY custom/custom_hplip.run /tmp
+RUN chmod +x /tmp/custom_hplip.run
+RUN /tmp/custom_hplip.run --quiet --accept --nox11
