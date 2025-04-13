@@ -111,6 +111,25 @@ https://developers.hp.com/hp-linux-imaging-and-printing/plugins
 
 hp-plugin -p hplip-3.25.2-plugin.run -i
 
+
+sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+
+
+
+
+hp-scan works that is a progress
+hp-scan[3472]: debug: getDeviceUri(None, None, ['hpaio'], {'scan-type': (<built-in function gt>, 0)}, , True)
+hp-scan[3472]: debug: Mode=0
+warning: No destinations specified. Adding 'file' destination by default.
+Using device hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117
+
+
+
+https://linuxcapable.com/how-to-install-lxqt-on-ubuntu-linux/
+
+after that install plugin
+abmin@siriprint:~/Apps$ scanimage -L
+device `hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117' is a Hewlett-Packard HP_LaserJet_MFP_M139-M142 all-in-one
 ```
 
 # scanservjs
