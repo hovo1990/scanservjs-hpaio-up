@@ -76,6 +76,9 @@ sudo scanimage --device "hpaio:/usb/HP_LaserJet_MFP_M139-M142?serial=VNF5347117"
 
 
 
+
+hp-check -t
+
 ```
 
 # scanservjs
