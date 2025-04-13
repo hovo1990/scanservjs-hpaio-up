@@ -182,3 +182,4 @@ RUN ./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/
 
 RUN make
 RUN make install
+WORKDIR /usr/lib/scanservjs

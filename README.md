@@ -5,7 +5,7 @@
 ```bash
 BUILDKIT_STEP_LOG_MAX_SIZE=-1
 BUILDKIT_STEP_LOG_MAX_SPEED=-1
-docker buildx build -f Dockerfile -t hovo:test .
+docker buildx build -f Dockerfile -t hovo:test . --output type=docker
 
 
 # it recreates all the time
@@ -15,6 +15,7 @@ docker buildx build -f Dockerfile -t hovo:test .  --builder "$(docker buildx cre
 docker buildx create --bootstrap --use --name buildkit \
     --driver-opt env.BUILDKIT_STEP_LOG_MAX_SIZE=-1 \
     --driver-opt env.BUILDKIT_STEP_LOG_MAX_SPEED=-1
+
 docker buildx build --progress plain -f Dockerfile -t hovo:test .
 
 
@@ -24,6 +25,7 @@ docker run \
   --detach \
   --publish 8080:8080 \
   --volume /var/run/dbus:/var/run/dbus \
+  --volume /dev/bus/usb:/dev/bus/usb \
   --restart unless-stopped \
   --name scanservjs-container \
   --privileged hovo:test
