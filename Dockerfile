@@ -169,4 +169,12 @@ RUN /tmp/depend.sh
 # -- * Install new hplip driver
 COPY custom/custom_hplip.run /tmp
 RUN chmod +x /tmp/custom_hplip.run
-RUN printf 'y\ny\ny\ny\ny\ny\ny\ny\n' | /tmp/custom_hplip.run --accept --nox11
+# RUN printf 'y\ny\ny\ny\ny\ny\ny\ny\n' | /tmp/custom_hplip.run --accept --nox11
+WORKDIR /tmp
+RUN tar xvfz custom_h-3.25.2.tar.gz
+WORKDIR /tmp/custom_h-3.25.2
+RUN ./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-network-build --enable-scan-build --enable-fax-build --enable-dbus-build --disable-qt4 --enable-qt5 --disable-class-driver --enable-doc-build --disable-policykit --disable-libusb01_build --disable-udev_sysfs_rules --enable-hpcups-install --disable-hpijs-install --disable-foomatic-ppd-install --disable-foomatic-drv-install --disable-cups-ppd-install --enable-cups-drv-install --enable-apparmor_build --enable-hplip_testing_flag
+
+RUN make
+RUN python3 ./installer/fix_symlink.py
+RUN make install
